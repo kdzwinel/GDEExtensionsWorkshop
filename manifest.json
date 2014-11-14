@@ -14,5 +14,9 @@
       "38":"img/icon38.png"
     },
     "default_popup": "popup.html"
+  },
+  "permissions": ["storage"],
+  "background": {
+    "scripts": ["GDE_API.js", "background.js"]
   }
 }
