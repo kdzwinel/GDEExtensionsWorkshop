@@ -4,15 +4,21 @@
     <meta charset="utf-8">
     <title></title>
 
-    <!--<link rel="stylesheet" href="main.css">-->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/popup.css">
 </head>
-<body>
+<body class="container">
 
-<p id="name"></p>
+<div class="row">
+    <div class="col-md-12">
+        <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span id="name"></span></h4>
 
-<ul id="list"></ul>
+        <ul id="list" class="list-group"></ul>
+    </div>
+</div>
 
-<script src="GDE_API.js"></script>
-<script src="popup.js"></script>
+<script src="js/GDE_API.js"></script>
+<script src="js/popup.js"></script>
 </body>
 </html>

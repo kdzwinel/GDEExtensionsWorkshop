@@ -17,7 +17,7 @@
   },
   "permissions": ["storage"],
   "background": {
-    "scripts": ["GDE_API.js", "background.js"]
+    "scripts": ["js/GDE_API.js", "js/background.js"]
   },
   "options_page": "options.html"
 }
