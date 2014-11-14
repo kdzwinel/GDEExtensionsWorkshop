@@ -7,7 +7,7 @@ chrome.storage.local.get(['user', 'activities'], function(data) {
   (data.activities).forEach(function(item) {
     var span = document.createElement('span');
     span.classList.add('badge');
-    span.innerText = item.resharers + item.plus_oners + item.comments;
+    span.innerText = item.total_impact;
 
     var li = document.createElement('li');
     li.classList.add("list-group-item");

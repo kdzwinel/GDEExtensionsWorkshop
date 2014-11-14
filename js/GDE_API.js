@@ -14,8 +14,8 @@
 
       return getJSON(url + '?limit=' + limit + '&gplus_id=' + id).then(function(data) {
         return (data.items).sort(function(a, b) {
-          var dateA = new Date(a.date_created);
-          var dateB = new Date(b.date_created);
+          var dateA = new Date(a.post_date);
+          var dateB = new Date(b.post_date);
 
           return dateB.getTime() - dateA.getTime();
         });
