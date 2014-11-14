@@ -1,25 +1,35 @@
-var gPlusId = '111285183943460335169';
-
 function updateUser() {
-  GDE_API.getUser(gPlusId).then(function (user) {
-    chrome.storage.local.set({
-      user: user
-    });
+  chrome.storage.local.get('gPlusId', function(data) {
+    if(data && data.gPlusId) {
+
+      GDE_API.getUser(data.gPlusId).then(function (user) {
+        chrome.storage.local.set({
+          user: user
+        });
+      });
+
+    }
   });
 }
 
 function updateActivities() {
-  GDE_API.getUserActivities(gPlusId, 100).then(function (activities) {
-    chrome.storage.local.set({
-      activities: activities
-    });
+  chrome.storage.local.get('gPlusId', function(data) {
+    if(data && data.gPlusId) {
 
-    chrome.browserAction.setBadgeBackgroundColor({
-      color: '#F00'
-    });
-    chrome.browserAction.setBadgeText({
-      text: '' + activities.length
-    });
+      GDE_API.getUserActivities(data.gPlusId, 100).then(function (activities) {
+        chrome.storage.local.set({
+          activities: activities
+        });
+
+        chrome.browserAction.setBadgeBackgroundColor({
+          color: '#F00'
+        });
+        chrome.browserAction.setBadgeText({
+          text: '' + activities.length
+        });
+      });
+
+    }
   });
 }
 
