@@ -1,27 +1,37 @@
-# GDE Chrome Extensions Workshop - Step 1
+# Chrome Extensions Workshop - Step 2
 
 ## TODO
+1. Create `popup.html` file in your extension folder.
+2. Add `default_popup` field to the `browser_action` settings in the manifest and set it to `popup.html`.
+3. Test your changes. After clicking browser action button small popup should appear.
+4. Create and add `popup.js` and `popup.css` to your `popup.html` page.
+5. Add provided `GDE_API.js` library (see `js/` folder above) to your `popup.html` page.
+	- `GDE_API.js` library provides easy access to GDE Tracking App API. You can use it as follows:
 
-1. Create a folder for your extension.
-2. Create a `manifest.json` file in that folder.
-3. Fill `manifest.json` with basic fields (`name`, `description`, `version`, `manifest_version`, `icons`)
-	- manifest file format is described [here](http://developer.chrome.com/extensions/manifest.html)
-	- use icons from the `img` folder (or create your own). It's OK to only set the 64x64 icon (`icon_64.png`).
-4. Test your extension in Chrome using "Load unpacked extension..." button on the extensions page (`chrome://extensions`). Note that "Developer mode" must be enabled (top right corner of the extensions page)!
-<img src="https://i.imgur.com/mna22QC.png" alt="Extension loaded using \"Load unpacked extension...\" feature" style="width: 100%;"/>
-	- If there were any errors while loading your extension - fix them! After that, try loading your extension again.
-5. Add `browser_action` field with `default_icon` to your manifest file (set both `img/icon_19.png` and `img/icon_38.png` there).
-6. Reload your extension to test latest changes (use "Reload" link under extension details or reload whole `chrome://extensions` page).
-7. If you are able to see your extensions' icon in the browser UI, you have successful completed this step! If you have any extra time left, see the "Protip" section at the bottom of this page.
-<img src="http://i.imgur.com/GCEd81l.png" alt="Browser action" style="width:143px"/>
+    GDE_API.getUserActivities(googlePlusId).then(function (activities) {
+      ///...
+    });
+
+    GDE_API.getUser(googlePlusId).then(function (user) {
+      ///...
+    });
+    
+	- To find out what your Google+ ID is, open [plus.google.com](http://plus.google.com) and copy the link of your "Profile" page. Last part of that link is your Google+ ID (it should be something like "111285183943460335169").
+	<br/><img src="http://i.imgur.com/xTcPy1p.png" /><br/>
+
+6. Using `GDE_API.js` implement the following functionality (showing user name and recent activity in the popup):
+<br/><img src="http://i.imgur.com/V2PRkn9.png" alt="Popup with activity information" /><br/>
+	- You can debug your popup by right-clicking on the browser action button and choosing "Inspect Popup".
+	- You can't use inline JavaScript on your page (`<script>var bla;...` or `<a href='#' onclick='something()'...`), keep all your code in the separate files.
+	- You can (but definitely don't have to) use any libraries/frameworks you wish. However, don't use external files! Download all resources that you need to your extension's folder.
+5. Done! If you have extra time left you can polish your extension. Check out the list of possible improvements below.
 
 ## Links
+- [Browser Action Docs](http://developer.chrome.com/extensions/browserAction.html)
 - [Manifest File Format](http://developer.chrome.com/extensions/manifest.html)
-- [Browser Actions](http://developer.chrome.com/extensions/browserAction.html)
-- [JSON Validator](http://jsonlint.com/)
-- [Icon search engine](https://www.iconfinder.com/)
 
-## Protip
-If you are using any of the IntelliJ IDEs (e.g. WebStorm), please follow [this](Nhttps://stackoverflow.com/questions/13997468/how-do-i-use-webstorm-for-chrome-extension-development/25466708#25466708) instructions to enable autocompletion for the Chrome Extensions API.
-
-<img src="https://i.imgur.com/9pkBjeV.png" alt="Autocompletion in WebStorm for Chrome Extensions API" style="width: 100%;"/>
+## Extra time left?
+- While data are being loaded show some text/animation (e.g. gif or CSS Animation).
+- Clean up your file structure (e.g. keep all JavaScript files in `js/` folder, css files in `css/` etc.)
+- Make sure that user will get an error message if API is unreachable.
+- Make this popup pretty! Play with styles and maybe use [bootstrap](http://getbootstrap.com/)?
