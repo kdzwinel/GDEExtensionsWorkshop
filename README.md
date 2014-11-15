@@ -13,7 +13,7 @@
 5. Add `browser_action` field with `default_icon` to your manifest file (set both `img/icon_19.png` and `img/icon_38.png` there).
 6. Reload your extension to test latest changes (use "Reload" link under extension details or reload whole `chrome://extensions` page).
 7. If you are able to see your extensions' icon in the browser UI, you have successful completed this step! If you have any extra time left, see the "Protip" section at the bottom of this page.
-<img src="http://i.imgur.com/edq1WU3.png" alt="Browser action" style="width:143px"/>
+<br/><img src="http://i.imgur.com/edq1WU3.png" alt="Browser action" style="width:143px"/>
 
 ## Links
 - [Manifest File Format](http://developer.chrome.com/extensions/manifest.html)
@@ -22,6 +22,6 @@
 - [Icon search engine](https://www.iconfinder.com/)
 
 ## Protip
-If you are using any of the IntelliJ IDEs (e.g. WebStorm), please follow [this](Nhttps://stackoverflow.com/questions/13997468/how-do-i-use-webstorm-for-chrome-extension-development/25466708#25466708) instructions to enable autocompletion for the Chrome Extensions API.
+If you are using any of the IntelliJ IDEs (e.g. WebStorm), please follow [these](https://stackoverflow.com/questions/13997468/how-do-i-use-webstorm-for-chrome-extension-development/25466708#25466708) instructions to enable autocompletion for the Chrome Extensions API.
 
 <img src="https://i.imgur.com/9pkBjeV.png" alt="Autocompletion in WebStorm for Chrome Extensions API" style="width: 100%;"/>
