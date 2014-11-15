@@ -1,37 +1,25 @@
-# Chrome Extensions Workshop - Step 2
+# Chrome Extensions Workshop - Step 3
 
 ## TODO
-1. Create `popup.html` file in your extension folder.
-2. Add `default_popup` field to the `browser_action` settings in the manifest and set it to `popup.html`.
-3. Test your changes. After clicking browser action button small popup should appear.
-4. Create and add `popup.js` and `popup.css` to your `popup.html` page.
-5. Add provided `GDE_API.js` library (see `js/` folder above) to your `popup.html` page.
-	- `GDE_API.js` library provides easy access to GDE Tracking App API. You can use it as follows:
-
-    GDE_API.getUserActivities(googlePlusId).then(function (activities) {
-      ///...
-    });
-
-    GDE_API.getUser(googlePlusId).then(function (user) {
-      ///...
-    });
-    
-	- To find out what your Google+ ID is, open [plus.google.com](http://plus.google.com) and copy the link of your "Profile" page. Last part of that link is your Google+ ID (it should be something like "111285183943460335169").
-	<br/><img src="http://i.imgur.com/xTcPy1p.png" /><br/>
-
-6. Using `GDE_API.js` implement the following functionality (showing user name and recent activity in the popup):
-<br/><img src="http://i.imgur.com/V2PRkn9.png" alt="Popup with activity information" /><br/>
-	- You can debug your popup by right-clicking on the browser action button and choosing "Inspect Popup".
-	- You can't use inline JavaScript on your page (`<script>var bla;...` or `<a href='#' onclick='something()'...`), keep all your code in the separate files.
-	- You can (but definitely don't have to) use any libraries/frameworks you wish. However, don't use external files! Download all resources that you need to your extension's folder.
-5. Done! If you have extra time left you can polish your extension. Check out the list of possible improvements below.
+1. Create `background.js` file and set it, together with `GDE_API.js`, as your background script using `background` field in the manifest.
+	- you can debug background pages by clicking "background page" on the "Inspect views" list on `chrome://extensions/` page
+<br /><img src='https://i.imgur.com/IUROT04.png' alt='Inspect views: background page'/><br />
+2. Add "storage" permission to your extension using `permissions` field in the manifest.
+3. Implement following changes to your current extension:
+	- use `setInterval` on your background page to download user details and activities (`GDE_API`) every 10 minutes.
+	- store all downloaded data using [storage API](http://developer.chrome.com/extensions/storage.html) (`chrome.storage.local.set()`)
+	- replace `GDE_API` calls in the `popup.js` with data loaded from the storage (`chrome.storage.local.get()`)
+	- use `chrome.browserAction.setBadgeText` and `chrome.browserAction.setBadgeBackgroundColor` on your background page to show number of activities on the browser action button ( badge with a number)
+<br /><img src="https://i.imgur.com/60HWTNA.png" alt="Browser action button with a badge"/><br />
+4. Done! If you have extra time left you can polish your extension. Check list of possible improvements below.
 
 ## Links
-- [Browser Action Docs](http://developer.chrome.com/extensions/browserAction.html)
+- [Browser Action](http://developer.chrome.com/extensions/browserAction.html)
 - [Manifest File Format](http://developer.chrome.com/extensions/manifest.html)
+- [Background Pages](http://developer.chrome.com/extensions/background_pages.html)
+- [Storage API](http://developer.chrome.com/extensions/storage.html)
 
 ## Extra time left?
-- While data are being loaded show some text/animation (e.g. gif or CSS Animation).
-- Clean up your file structure (e.g. keep all JavaScript files in `js/` folder, css files in `css/` etc.)
-- Make sure that user will get an error message if API is unreachable.
-- Make this popup pretty! Play with styles and maybe use [bootstrap](http://getbootstrap.com/)?
+- Change text in the tooltip that appears when mouse is over the browser action button. By default this tooltip shows only extension name, but you can dynamically (same as with badges) change it to something more useful (e.g. show total impact of the activities). Use `chrome.browserAction.setTitle()`.
+- Show error message in the popup when there is no data in the storage.
+- You can dynamically change icon of the browser action button and even animate it (check [this](http://developer.chrome.com/extensions/examples/extensions/gmail.zip) sample extension).
