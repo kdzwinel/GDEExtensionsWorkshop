@@ -1,4 +1,4 @@
-# GDE Chrome Extensions Workshop - Step 1
+# Chrome Extensions Workshop - Step 1
 
 ## TODO
 
