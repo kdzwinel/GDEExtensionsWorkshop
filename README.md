@@ -1,21 +1,21 @@
 # Chrome Extensions Workshop - Step 2
 
 ## TODO
-1. Create `popup.html` file in your extension folder.
-2. Add `default_popup` field to the `browser_action` settings in the manifest and set it to `popup.html`.
+1. Create `popup.html` file in your extensions' folder.
+2. Add `default_popup` field to the `browser_action` settings in the manifest file and set it to `popup.html`.
 3. Test your changes. After clicking browser action button small popup should appear.
 4. Create and add `popup.js` and `popup.css` to your `popup.html` page.
 5. Add provided `GDE_API.js` library (see `js/` folder above) to your `popup.html` page.
 	- `GDE_API.js` library provides easy access to GDE Tracking App API. You can use it as follows:
+	```
+GDE_API.getUserActivities(googlePlusId).then(function (activities) {
+  ///...
+});
 
-    GDE_API.getUserActivities(googlePlusId).then(function (activities) {
-      ///...
-    });
-
-    GDE_API.getUser(googlePlusId).then(function (user) {
-      ///...
-    });
-    
+GDE_API.getUser(googlePlusId).then(function (user) {
+  ///...
+});
+	```
 	- To find out what your Google+ ID is, open [plus.google.com](http://plus.google.com) and copy the link of your "Profile" page. Last part of that link is your Google+ ID (it should be something like "111285183943460335169").
 	<br/><img src="http://i.imgur.com/xTcPy1p.png" /><br/>
 
