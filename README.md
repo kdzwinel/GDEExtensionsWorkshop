@@ -12,7 +12,7 @@
 	- pull Google+ ID from storage before using `GDE_API`
 5. Whenever user updates Google+ ID, make sure to update data coming from `GDE_API` immediately. There are two ways to achieve that:
 	- access your background page from your options page using `chrome.runtime.getBackgroundPage()`([docs](http://developer.chrome.com/extensions/runtime.html#method-getBackgroundPage)) and call some kind of a reload function (note that it must be available in the global scope).
-	- use `chrome.storage.onChanged.addListener()` on the background page to listen for any changes in the storage and, whenever Google+ ID changes, load appropriate data.
+	- use `chrome.storage.onChanged.addListener()` on the background page to listen for any changes in the storage and, whenever Google+ ID changes, reload the data.
 
 ## Links
 - [Manifest File Format](http://developer.chrome.com/extensions/manifest.html)
