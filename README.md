@@ -9,13 +9,13 @@
 	- `GDE_API.js` library provides easy access to GDE Tracking App API. You can use it as follows:
 	```
 GDE_API.getUserActivities(googlePlusId).then(function (activities) {
-  activities.forEach(function(activity) {
-    //activity.activity_title
-  });
+	activities.forEach(function(activity) {
+		//activity.activity_title
+	});
 });
 
 GDE_API.getUser(googlePlusId).then(function (user) {
-  //user.display_name
+	//user.display_name
 });
  	```
 	- To find out what your Google+ ID is, open [plus.google.com](http://plus.google.com) and copy the link of your "Profile" page. Last part of that link is your Google+ ID (it should be something like "111285183943460335169").
