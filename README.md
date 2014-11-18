@@ -7,17 +7,17 @@
 4. Create and add `popup.js` and `popup.css` to your `popup.html` page.
 5. Add provided `GDE_API.js` library (see `js/` folder above) to your `popup.html` page.
 	- `GDE_API.js` library provides easy access to GDE Tracking App API. You can use it as follows:
+	```
+GDE_API.getUserActivities(googlePlusId).then(function (activities) {
+  activities.forEach(function(activity) {
+    //activity.activity_title
+  });
+});
 
-    GDE_API.getUserActivities(googlePlusId).then(function (activities) {
-      activities.forEach(function(activity) {
-        //activity.activity_title
-      });
-    });
-
-    GDE_API.getUser(googlePlusId).then(function (user) {
-      //user.display_name
-    });
-    
+GDE_API.getUser(googlePlusId).then(function (user) {
+  //user.display_name
+});
+ 	```
 	- To find out what your Google+ ID is, open [plus.google.com](http://plus.google.com) and copy the link of your "Profile" page. Last part of that link is your Google+ ID (it should be something like "111285183943460335169").
 	<br/><img src="http://i.imgur.com/xTcPy1p.png" /><br/>
 
